@@ -25,24 +25,22 @@ import { Meteor } from 'meteor/meteor';
 import { ServiceConfiguration } from 'meteor/service-configuration';
 
 if (Meteor.isDevelopment) {
-	if (Meteor.settings.private?.OAUTH?.google) {
-			process.env.OAUTH_GOOGLE_CLIENT_ID = Meteor.settings.private.OAUTH.google.CLIENT_ID;
-			process.env.OAUTH_GOOGLE_SECRET = Meteor.settings.private.OAUTH.google.SECRET;
-	} else {
-		console.warn('[App name] - Google OAuth settings are not configured.');
-		process.env.OAUTH_GOOGLE_CLIENT_ID = '';
-		process.env.OAUTH_GOOGLE_SECRET = '';
-	}
+    if (Meteor.settings.private?.OAUTH?.google) {
+        process.env.OAUTH_GOOGLE_CLIENT_ID = Meteor.settings.private.OAUTH.google.CLIENT_ID;
+        process.env.OAUTH_GOOGLE_SECRET = Meteor.settings.private.OAUTH.google.SECRET;
+    } else {
+        console.warn('[App name] - Google OAuth settings are not configured.');
+    	process.env.OAUTH_GOOGLE_CLIENT_ID = '';
+    	process.env.OAUTH_GOOGLE_SECRET = '';
+    }
 }
 
-ServiceConfiguration.configurations.upsert({
-	service: 'google'
-}, {
-	$set: {
-		clientId: process.env.OAUTH_GOOGLE_CLIENT_ID,
-		loginStyle: "popup",
-		secret: process.env.OAUTH_GOOGLE_SECRET
-	}
+ServiceConfiguration.configurations.upsert({ service: 'google' }, {
+    $set: {
+        clientId: process.env.OAUTH_GOOGLE_CLIENT_ID,
+        loginStyle: "popup",
+        secret: process.env.OAUTH_GOOGLE_SECRET
+    }
 });
 ```
 
@@ -91,25 +89,25 @@ import GoogleButton from './path/to/customGoogleButton';
 
 export default class Login extends Component {
 
-	async handleGoogleLogin() {
-		try {
-			await Meteor.loginWithGoogle({
-				webClientId: Platform.OS === 'ios' ? Config.GOOGLE_CLIENT_ID_IOS : Config.GOOGLE_CLIENT_ID_ANDROID
-			});
-			// login success, then do anything
-		} catch (exception) {
-			// error in login with Google
-			console.error(exception);
-		}
-	}
+    async handleGoogleLogin() {
+        try {
+            await Meteor.loginWithGoogle({
+                webClientId: Platform.OS === 'ios' ? Config.GOOGLE_CLIENT_ID_IOS : Config.GOOGLE_CLIENT_ID_ANDROID
+            });
+            // login success, then do anything
+        } catch (exception) {
+            // error in login with Google
+            console.error(exception);
+        }
+    }
 
-	render() {
-		return (
-			<View>
-				<GoogleButton onPress={ handleGoogleLogin }/>
-			</View>
-		);
-	}
+    render() {
+        return (
+            <View>
+                <GoogleButton onPress={ handleGoogleLogin }/>
+            </View>
+        );
+    }
 };
 ```
 
