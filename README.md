@@ -75,6 +75,8 @@ _projectRoot/.env_
 GOOGLE_CLIENT_ID_IOS=<client_id_ios>.apps.googleusercontent.com
 GOOGLE_CLIENT_ID_ANDROID=<client_id_android>.apps.googleusercontent.com
 ```
+ - _GOOGLE_CLIENT_ID_IOS: You can find it in GoogleServices-Info.plist as CLIENT_ID_
+ - _GOOGLE_CLIENT_ID_ANDROID: You can find it in google-services.json as client-> oauth_client -> client_id_
 
 ### Login
 
