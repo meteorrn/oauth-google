@@ -1,6 +1,5 @@
 import Meteor from '@meteorrn/core';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
-import resolve from 'resolve';
 
 /**
  * Login with Google using Meteor Accounts and React Native

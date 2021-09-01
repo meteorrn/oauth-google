@@ -1,6 +1,6 @@
 {
   "name": "@meteorrn/oauth-google",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Accounts Google for Meteor React Native",
   "main": "index.js",
   "scripts": {
@@ -25,11 +25,10 @@
   },
   "homepage": "https://github.com/meteorrn/oauth-google#readme",
   "dependencies": {
-    "@meteorrn/core": "^2.3.0",
-    "@react-native-google-signin/google-signin": "^6.0.1",
-    "react-native-config": "^1.4.3"
+    "@react-native-google-signin/google-signin": "6.0.1"
   },
   "peerDependencies": {
-    "react-native": ">= 0.63.4"
+    "@meteorrn/core": ">=2.1.0",
+    "react-native": ">=0.60.0"
   }
 }

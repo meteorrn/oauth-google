@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-Have RN >= 0.60
+Have RN >= 0.60.0
 
 ## Installation
 
