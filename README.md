@@ -97,7 +97,7 @@ export default class Login extends Component {
                 if (!error) {
     	            //Do anything
                 } else {
-    	            console.error('There was an error in login with Facebook: ', error);
+    	            console.error('There was an error in login with Google: ', error);
                 }
             });
     }
