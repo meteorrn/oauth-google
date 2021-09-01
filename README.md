@@ -91,16 +91,15 @@ import GoogleButton from './path/to/customGoogleButton';
 
 export default class Login extends Component {
 
-    async handleGoogleLogin() {
-        try {
-            await Meteor.loginWithGoogle({
-                webClientId: Platform.OS === 'ios' ? Config.GOOGLE_CLIENT_ID_IOS : Config.GOOGLE_CLIENT_ID_ANDROID
+    handleGoogleLogin() {
+    	const clientId = Platform.OS === 'ios' ? Config.GOOGLE_CLIENT_ID_IOS : Config.GOOGLE_CLIENT_ID_ANDROID;
+    	Meteor.loginWithGoogle({ webClientId: clientId }, (error) => {
+                if (!error) {
+    	            //Do anything
+                } else {
+    	            console.error('There was an error in login with Facebook: ', error);
+                }
             });
-            // login success, then do anything
-        } catch (exception) {
-            // error in login with Google
-            console.error(exception);
-        }
     }
 
     render() {
